@@ -1,8 +1,8 @@
  <!--Navigation bar-->
  <nav class="navbar navbar-light fixed-top bg-light">
-  <a class="color-red" href="../Pages/Page-List.html"><i class="fas fa-chevron-left"></i></a>
-  <a class="color-black padding-left" href="Widget-List.html"><b class="font-lg">Widgets</b></a>
-  <a class="color-red icon-right" href="Widget-Chooser.html"><i  class="fas fa-plus"></i></a>
+  <a class="color-red" routerLink="/user/:uid/website/:wid/page"><i class="fas fa-chevron-left"></i></a>
+  <a class="color-black padding-left" routerLink="user/:uid/website/:wid/page/:pid/widget"><b class="font-lg">Widgets</b></a>
+  <a class="color-red icon-right" routerLink="user/:uid/website/:wid/page/:pid/widget/new"><i  class="fas fa-plus"></i></a>
   </nav>
 <!--Middle page Main Contents-->
 <div class="container-fluid">
@@ -10,8 +10,8 @@
        <div>
              <!--Icons-->
              <div class="absolute-right">
-          <a href="Widget-Heading.html"> <i class="fas fa-cog"></i></a>
-          <a href="#"> <i class="fas fa-bars"></i></a>
+          <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+          <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
              </div>
              <!--Contents-->
              <div>
@@ -22,8 +22,8 @@
    <div>
 <!--Icons-->
 <div class="absolute-right">
-<a href="Widget-Heading.html"> <i class="fas fa-cog"></i></a>
-<a href="#"> <i class="fas fa-bars"></i></a>
+<a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+<a routerLinkf="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
 </div>
 <!--Contents-->
 <div>
@@ -34,8 +34,8 @@
    <div>
           <!--Icons-->
           <div class="absolute-right">
-       <a href="Widget-Image.html"> <i class="fas fa-cog"></i></a>
-       <a href="#"> <i class="fas fa-bars"></i></a>
+       <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+       <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
           </div>
           <!--Contents-->
           <div>
@@ -47,8 +47,8 @@
    <div>
           <!--Icons for th eright corner-->
           <div class="absolute-right">
-       <a href="Widget-Heading.html"> <i class="fas fa-cog"></i></a>
-       <a href="#"> <i class="fas fa-bars"></i></a>
+       <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+       <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
           </div>
           <!--Contents-->
           <div>
@@ -58,7 +58,7 @@
               Remove the wicked, whose selfishness harms us all. “As regards the wicked, they will be cut off from the very earth.”—Proverbs 2:22.<br>
 
               End all wars. “[God] is making wars to cease to the extremity of the earth.”—Psalm 46:9. <br> 
-<a href="https://www.jw.org/en/bible-teachings/questions/what-gods-kingdom-will-do/">For more reading about this
+<a routerLink="https://www.jw.org/en/bible-teachings/questions/what-gods-kingdom-will-do/">For more reading about this
               subject please click on this link </a>
             
          </p>
@@ -67,16 +67,16 @@
    <div>
 <!--Icons-->
 <div class="absolute-right">
-<a href="Widget-Heading.html"> <i class="fas fa-cog"></i></a>
-<a href="#"> <i class="fas fa-bars"></i></a>
+<a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+<a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
 </div>
 <!--Contents-->
 <div>
   <!-- JW video Widget-->
 <h3>What Is God’s Kingdom?</h3> Jesus taught about God’s Kingdom more than any other subject. What is the Kingdom? How will it benefit you?
 <div class="absolute-right">
-  <a href="Widget-Youtube.html"> <i class="fas fa-cog"></i></a>
-  <a href="#"> <i class="fas fa-bars"></i></a>
+  <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+  <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
   </div>
  <div class="absolute-left">
   <iframe width="1820" height="880" src="https://www.youtube.com/embed/Bjc6KujCgjQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -84,8 +84,8 @@
   
 <!--Icons after Jw Video Widget-->
 <div class="absolute-right" class="embed-responsive embed-responsive-21by9">
-<a href="Widget-Heading.html"> <i class="fas fa-cog"></i></a>
-<a href="#"> <i class="fas fa-bars"></i></a>
+<a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
+<a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
 </div> 
 <p> This video details the real biblical definition of What is God's Kingdom really is?
      </div>
@@ -95,6 +95,6 @@
 <!--Bottom Navigation Bar Footer-->
 <nav class="navbar navbar-light fixed-bottom bg-light">
   <div class="full-width" >
-      <a class="color-red float-right" href="../User/Profile.html"><i class="fas fa-user"></i></a> 
+      <a class="color-red float-right" routerLink="user/:uid"><i class="fas fa-user"></i></a> 
   </div>
 </nav>
