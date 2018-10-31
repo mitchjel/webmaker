@@ -2,18 +2,16 @@
 <nav class="navbar navbar-dark bg-primary fixed-top row navbar-height">
   <!-- Left Navigation Panel-->
   <div class="col-4 d-none d-sm-block">
-  <a class="color-white" href="website-List.html"><i class="fas fa-chevron-left"></i></a>
-      <a class="color-white padding-left" href="#"><h5 class="display-inline">Websites</h5></a>
-              <a class="color-white float-right" href="Website-New.html"> <i class="fas fa-plus"></i></a>
+  <a class="color-white" routerLink="/user/:uid/website"><i class="fas fa-chevron-left"></i></a>
+      <a class="color-white padding-left" routerLink="/user/:uid/website/new"><h5 class="display-inline">Websites</h5></a>
+              <a class="color-white float-right" routerLink="/user/:uid/website/new"> <i class="fas fa-plus"></i></a>
   </div>
               <!--Right Navigation Panel-->
       <div class="col-sm-8">
-              <a class="color-white d-sm-none" href="website-List.html"><i class="fas fa-chevron-left"></i></a>
-              <a class="color-white  padding-left" href="#"><h5 class="display-inline">New Website</h5></a>
-                      <a class="color-white float-right" href="website-List.html"><i class="fas fa-check"></i></a> 
-  
+              <a class="color-white d-sm-none" routerLink="/user/:uid/website"><i class="fas fa-chevron-left"></i></a>
+     <a class="color-white  padding-left" routerLink="/user/:uid/website/new"><h5 class="display-inline">New Website</h5></a>
+                      <a class="color-white float-right" routerLink="/user/:uid/website"><i class="fas fa-check"></i></a> 
           </div>
-  
   </nav>
           <!--List & Form-->
           <div class="row">
@@ -22,17 +20,21 @@
           <div class="col-4 d-none d-sm-block">
   <div class="container-fluid">   
           <ul class="list-group">
-                      <li class="list-group-item"> <a href="../Pages/Page-List.html"> Address Book App</a> 
-                          <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a>
+                      <li class="list-group-item"> 
+                          <a routerLink="/user/:uid/website/:wid/page"> Address Book App</a> 
+                          <a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
                               </li>
-                      <li class="list-group-item"> <a href="../Pages/Page-List.html"> Blogger </a>
-                          <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a></li>
-                      <li class="list-group-item"><a href="../Pages/Page-List.html"> Blogging App </a>
-                          <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a>
+                  <li class="list-group-item"> 
+                <a routerLink="/user/:uid/website/:wid/page"> Blogger </a>
+         <a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a></li>
+         <li class="list-group-item">
+             <a routerLink="/user/:uid/website/:wid/page"> Blogging App </a>
+             <a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
                       </li>
-                          <li class="list-group-item"><a href="../Pages/Page-List.html"> Script Testing App </a>
-                          <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a>
-                      </li>
+        <li class="list-group-item">
+            <a routerLink="/user/:uid/website/:wid/page"> Script Testing App </a>
+         <a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
+         </li>
               </ul>
                   </div>
           </div>
@@ -48,16 +50,16 @@
                   <label for="description"> <b>Description</b></label>
                   <textarea id="description"rows="10" class="form-control"type="text" placeholder="Description of your website"></textarea>
               </div> 
-              <a href="website-List.html"class="btn btn-lg btn-warning">Cancel</a>
-              <a href="website-List.html"class="btn btn-lg btn-success float-right">Submit</a>
+              <a routerLink="/user/:uid/website"class="btn btn-lg btn-warning">Cancel</a>
+              <a routerLink="/user/:uid/website"class="btn btn-lg btn-success float-right">Submit</a>
               </form>
           </div>
-  </div>
-          </div>
+       </div>
+    </div>
   <!--Footer-->
   <nav class="navbar navbar-dark bg-primary fixed-bottom">
       <div class="full-width" >
-          <a class="color-white float-right" href="../User/Profile.html"><i class="fas fa-user"></i></a> 
+          <a class="color-white float-right" routerLink="/user/:uid"><i class="fas fa-user"></i></a> 
       </div>
       </nav>
   

@@ -1,25 +1,26 @@
   <!--Navbar-->
   <nav class="navbar fixed-top navbar-dark bg-primary">
 
-    <a class="color-white" href="../User/Profile.html"><i class="fas fa-chevron-left"></i></a>
+    <a class="color-white" routerLink="/user/:uid"><i class="fas fa-chevron-left"></i></a>
     <div class="left-width">
-    <a class="navbar-brand float-left" href="#"><b>Websites</b></a>
+    <a class="navbar-brand float-left" routerLink="/user/:uid/website"><b>Websites</b></a>
     </div>
-    <a class="color-white" href="Website-New.html"> <i class="fas fa-plus"></i></a>
+    <a class="color-white" routerLink="/user/:uid/website/new"> <i class="fas fa-plus"></i></a>
         </nav>
         <!--website List-->
         <div class="container-fluid">
         <ul class="list-group">
-             <li class="list-group-item"> <a href="../Pages/Page-List.html"> Address Book App</a> 
-                <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a>
-                    </li>
-             <li class="list-group-item"> <a href="../Pages/Page-List.html"> Blogger </a>
-                <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a></li>
-             <li class="list-group-item"><a href="../Pages/Page-List.html"> Blogging App </a>
-                <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a>
+             <li class="list-group-item"> <a routerLink="/user/:uid/website/:wid/page"> Address Book App</a> 
+                <a class="float-right"routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
+                 </li>
+             <li class="list-group-item"> <a routerLink="/user/:uid/website/:wid/page"> Blogger </a>
+        <a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
+    </li>
+             <li class="list-group-item"><a routerLink="/user/:uid/website/:wid/page"> Blogging App </a>
+                <a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
             </li>
-                <li class="list-group-item"><a href="../Pages/Page-List.html"> Script Testing App </a>
-                <a class="float-right" href="Website-Edit.html"><i class="fas fa-cog"></i></a>
+        <li class="list-group-item"><a routerLink="/user/:uid/website/:wid/page"> Script Testing App </a>
+            <a class="float-right" routerLink="/user/:uid/website/:wid/"><i class="fas fa-cog"></i></a>
              </li>
         </ul>
         </div>
@@ -27,6 +28,6 @@
     
         <nav class="navbar navbar-dark bg-primary fixed-bottom">
            <div class="full-width" >
-               <a class="color-white float-right" href="../User/Profile.html"><i class="fas fa-user"></i></a> 
+               <a class="color-white float-right" routerLink="../User/:uid"><i class="fas fa-user"></i></a> 
            </div>
          </nav>
