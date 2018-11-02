@@ -38,7 +38,7 @@ users = [
 
 
   createUser(user: any) {
-    user._id = Math.random().toString;;
+    user._id = Math.random().toString();
     this.users.push(user);
     return user;
   }
@@ -65,7 +65,7 @@ users = [
         }
     }
   }
-  updateUser(userId, user) { 
+  updateUser( user) { 
       const oldUser = this.findUserById(user._id);
       const index = this.users.indexOf(oldUser);
       this.users[index] = user;

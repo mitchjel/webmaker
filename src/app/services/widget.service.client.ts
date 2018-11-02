@@ -40,7 +40,7 @@ export class WidgetService {
      }
   ];
   createWidget (widget) {
-      widget._id = Math.random().toString;
+      widget._id = Math.random().toString();
       this.widgets.push(widget);
       return widget;
   }

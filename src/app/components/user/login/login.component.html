@@ -1,14 +1,18 @@
 <div class="container" >
   <h1> Login</h1>
-  <form>
+  <form  (ngSubmit) = "login()" #myForm= "ngForm">  <!-- #myForm is angular way to create and ID-->
+   <div *ngIf ="errorFlag" class = "alert laert-danger"> The Username and password don't match our records, 
+      please try again! </div>
       <div class="form-group"> 
-            <input class="form-control" type="text" placeholder="username">
+        <input class="form-control" required name = "username" [(ngModel)]= "username" type="text" placeholder="username" #userInput = "ngModel">
       </div>
+      <div *ngIf ="userInput.invalid && userInput.touched" class ="alert alert-warning"> Username Field can not be empty! </div>
 
   <div class="form-group">
-      <input class="form-control" type="password" placeholder="password">
+      <input class="form-control" required name = "password" [(ngModel)]= "password" type= "password" placeholder="password" #passwordInput = "ngModel">
   </div> 
-  <a routerLink="/user/:uid" class="btn btn-primary btn-block">Login</a>
+  <div *ngIf ="passwordInput.invalid && passwordInput.touched" class ="alert alert-warning"> Password Field can not be empty! </div>
+  <button [disabled] = "myForm.invalid" type = "submit" class="btn btn-primary btn-block">Login</button>
 
   <a routerLink="/register" class="btn btn-success btn-block">Register</a>
   </form>

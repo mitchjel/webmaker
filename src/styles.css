@@ -66,3 +66,6 @@ a:hover{
 .icon-right {
     right: 0px;
 }
+.bg-transparent{
+background-color: transparent;
+}
