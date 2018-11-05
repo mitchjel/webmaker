@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {WebsiteService} from "src/app/services/website.service.client";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-website-edit',
@@ -6,10 +8,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./website-edit.component.css']
 })
 export class WebsiteEditComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+  websites : any[];
+  uid: string;
+  wid: string;
+  nem : string;
+  description : string;
+  website;
+  constructor(
+    private websiteService: WebsiteService,
+    private activatedRoute:  ActivatedRoute,
+    private router: Router,
+    )  {}
+    
+    ngOnInit() {
+      this.activatedRoute.params.subscribe(
+        (params)=> {
+          this.uid = params ['uid'];
+          this.wid = params ['wid'];
+          this.websites = this.websiteService.findWebsitesByUser(this.uid);
+          this.website = this.websiteService.findWebsiteById(this.wid);
+          this.website = this.websiteService.findWebsiteById(this.wid);
+        });
+      }
+      update () {
+        const newWeb = {
+          name: this.website.name,
+          desciption : this.website.description,
+           _id: this.wid,
+           developerId: this.uid
+        };
+        this.websiteService.updateWebsite(newWeb);
+        this.router.navigate(["user",this.uid,"website"]);
+      }
+        delete(){
+          this.websiteService.deleteWebsite(this.wid);
+          this.router.navigate(["user",this.uid,"website"]);
+        }
+      }
+    
