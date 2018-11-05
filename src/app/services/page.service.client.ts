@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 // injecting service into module
 
+
 @Injectable()
 export class PageService {
   constructor() {}
@@ -9,19 +10,19 @@ export class PageService {
     { _id: "321", 
     name: "Post 1",
      websiteId: "456",
-      description: "Lorem"
+      title: "Lorem"
      },
   
     { _id: "432",
      name: "Post 2",
       websiteId: "456",
-       description: "Lorem"
+      title: "Lorem"
      },
   
     { _id: "543", 
     name: "Post 3",
      websiteId: "456",
-      description: "Lorem" 
+     title: "Lorem" 
     }
   ];
 
@@ -30,7 +31,7 @@ export class PageService {
       this.pages.push(page);
       return page;
   }
-  findPageByWebsiteId (websiteId) {
+  findPagesByWebsiteId (websiteId) {
     let Y = [];
     for (let x = 0; x < this.pages.length; x++){
         if ( this.pages[x].websiteId === websiteId) {
