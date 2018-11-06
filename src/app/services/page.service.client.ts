@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Page } from '../models/page.model.client';
 // injecting service into module
 
 
 @Injectable()
 export class PageService {
   constructor() {}
-  pages = 
+  pages: Page [] = 
   [
     { _id: "321", 
     name: "Post 1",
@@ -31,7 +32,7 @@ export class PageService {
       this.pages.push(page);
       return page;
   }
-  findPagesByWebsiteId (websiteId) {
+  findPagesByWebsiteId (websiteId: string ) {
     let Y = [];
     for (let x = 0; x < this.pages.length; x++){
         if ( this.pages[x].websiteId === websiteId) {
@@ -40,7 +41,7 @@ export class PageService {
     }
             return Y;
      }
-     findPageById (pageId) {
+     findPageById (pageId: string) {
         for (let x = 0; x < this.pages.length; x++){
             if (pageId === this.pages[x]._id) {
                 return this.pages[x];
@@ -48,12 +49,12 @@ export class PageService {
         }
      }
 
-     updatePage (page) {
+     updatePage (page: Page) {
         const oldPage = this.findPageById(page._id);
         const index = this.pages.indexOf(oldPage);
             this.pages[index] = page;
           }
-          deletePage (pageId) {
+          deletePage (pageId: string) {
             const oldPage = this.findPageById(pageId);
             const index = this.pages.indexOf(oldPage);
             this.pages.splice(index,1);

@@ -1,40 +1,35 @@
     <!--Navigation bar-->
     <nav class=" navbar navbar-light fixed-top bg-light">
-      <a class="color-red" routerLink="/user/:uid/website/:wid/page/:pid/widget"><i class="fas fa-chevron-left"></i></a>
-      <a class="navbar-brand" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid"> Edit Widget</a>
-      <a class="float-right color-red" routerLink="/user/:uid/website/:wid/page/:pid/widget"><i class="fas fa-check"></i></a>
+      <a class="color-red" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
+      <a class="navbar-brand" routerLink="/user/{{uid}}/website/{{wid}}page/{{pid}}/widget/{{wgid}}"> Edit Widget</a>
+      <button class="float-right color-red btn bg-transparent"  form ="myForm" (click)= "update()"><i class="fas fa-check"></i></button>
       
   </nav>
-  <!--List on the middle of the  edit widget-->
+  <!--List on the middle of  edit widget-->
   <div class="container"> 
-      <form>
-          <div clas="form-group">
+      <form id = "myForm" #myForm = "ngForm" (ngSubmit) = "update()">
+          <div class="form-group">
       <label for="name"> <b>Name</b></label>
-      <input type="text" id="name" class="form-control">
+      <input name = "name" placeholder = "Image Name" [(ngModel)] = "widget.name" type="text" id="name" class="form-control">
           </div>
-          <!--Text for the main page-->
-          <div clas="form-group">
-                  <label for="text"> <b>Text</b></label>
-                  <input type="text" id="name" class="form-control">
-              </div>
-              <!--URL for the main page-->
+           <!--URL for the main page-->
               <div class="form-group">
                       <label for="url"> <b>URL</b></label>
-                      <input type="text" id="url" class="form-control">
+                      <input name = "url" placeholder = "Image Url" [(ngModel)] = "widget.url"  type="text" id="url" class="form-control">
                   </div>
                    <!--Width for the main page-->
               <div class="form-group">
                       <label for="width"> <b>Width</b></label>
-                      <input type="text" id="width" class="form-control">
+                      <input name = "width" placeholder = "Image Width" [(ngModel)] = "widget.width"  type="text" id="width" class="form-control">
                   </div>
       
-              <a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="btn btn-danger btn-block" > Delete</a>
+              <button type = "button" (click) = "delete ()" class="btn btn-danger btn-block" > Delete</button>
       </form>
   </div>
      
    <!--Bottom Navigation Bar and Icon -->
 <nav class="navbar navbar-light fixed-bottom bg-light">
       <div class="full-width" >
-          <a class="color-red float-right" routerLink="/user/:uid"><i class="fas fa-user"></i></a> 
+          <a class="color-red float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a> 
       </div>
     </nav>

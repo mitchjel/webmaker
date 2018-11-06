@@ -69,3 +69,6 @@ a:hover{
 .bg-transparent{
 background-color: transparent;
 }
+.pointer{
+    cursor: pointer;
+}

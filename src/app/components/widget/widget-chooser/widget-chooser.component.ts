@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { WidgetService } from 'src/app/services/widget.service.client';
+import { Widget} from "src/app/models/widget.model.client";
 
 @Component({
   selector: 'app-widget-chooser',
@@ -6,10 +9,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./widget-chooser.component.css']
 })
 export class WidgetChooserComponent implements OnInit {
-
-  constructor() { }
+uid: string;
+pid: string;
+wid: string;
+  constructor( private activatedRoute: ActivatedRoute,
+    private widgetService: WidgetService, private router: Router) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(
+      params =>{
+        this.uid = params["uid"];
+        this.uid = params["pid"];
+        this.uid = params["wid"];
+      });
+    }
+         create(type: string) {
+            const widget: Widget = {
+            widgetType: type,  // want to  auto import
+            pageId: this.pid
+          };
+          this.widgetService.createWidget(widget);
+          const wgid: string = this.widgetService.widgets[this.widgetService.widgets.length-1]._id;
+          this.router.navigate([
+            'user',
+          this.uid,
+          'website',
+          this.wid,
+          'page',
+          this.pid,
+          'widget',
+          wgid]);
+
+        }
   }
 
-}
+

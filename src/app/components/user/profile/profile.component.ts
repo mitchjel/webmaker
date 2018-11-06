@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import {UserService } from "../../../services/user.service.client"; // import UserService from Services
+import { User } from 'src/app/models/user.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -11,11 +12,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService ) { }
     uid : string;
-    user;
+    user:User;
     oldUsername: string;
     userError: boolean;
     successFlag: boolean;
-    users;
+    users: User[];
   ngOnInit() {
     this.activatedRoute.params.subscribe(params =>{
         this.uid = params ["uid"];
@@ -33,7 +34,7 @@ export class ProfileComponent implements OnInit {
            
         }
         else {
-           const user = this.userService.findUserByUsername (this.user.username);
+           const user: User = this.userService.findUserByUsername (this.user.username);
            if (user) {
                   this.userError = true;
                   this.successFlag = false;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../../services/user.service.client";
-// import { UserService } from 'src/app/services/user.service.client';
+import { User } from "../../../models/user.model.client"; 
 import { Router } from "@angular/router";
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
   logIn () {
-    const user = this.userService.findUserByCredentials (
+    const user:User = this.userService.findUserByCredentials (
             this.username,
             this.password
             );

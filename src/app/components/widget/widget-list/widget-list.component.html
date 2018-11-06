@@ -1,100 +1,55 @@
  <!--Navigation bar-->
  <nav class="navbar navbar-light fixed-top bg-light">
-  <a class="color-red" routerLink="/user/:uid/website/:wid/page"><i class="fas fa-chevron-left"></i></a>
-  <a class="color-black padding-left" routerLink="user/:uid/website/:wid/page/:pid/widget"><b class="font-lg">Widgets</b></a>
-  <a class="color-red icon-right" routerLink="user/:uid/website/:wid/page/:pid/widget/new"><i  class="fas fa-plus"></i></a>
+  <a class="color-red" routerLink="/user/{{uid}}/website/{{wid}}/page"><i class="fas fa-chevron-left"></i></a>
+  <a class="color-black padding-left" routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><b class="font-lg">Widgets</b></a>
+  <a class="color-red icon-right" routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new"><i  class="fas fa-plus"></i></a>
   </nav>
 <!--Middle page Main Contents-->
 <div class="container-fluid">
-       <!--Widget Heading-->
-       <div>
+       <!--Widgets -->
+       <div *ngFor = "let widget of widgets">
              <!--Icons-->
              <div class="absolute-right">
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
+          <a routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{widget._id}}"> <i class="fas fa-cog"></i></a>
+          <a routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"> <i class="fas fa-bars"></i></a>
              </div>
              <!--Contents-->
-             <div>
-           <h1>What Will God’s Kingdom Accomplish?</h1>
-          </div>
-       
-<!--Second Widget Content-->
-   <div>
-<!--Icons-->
-<div class="absolute-right">
-<a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-<a routerLinkf="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
-</div>
-<!--Contents-->
-<div>
-<h3>The Bible’s answer</h3>
-</div>
-   </div>
-   <!--third Widget Content-->
-   <div>
-          <!--Icons-->
-          <div class="absolute-right">
-       <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-       <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
-          </div>
-          <!--Contents-->
-          <div>
-<img class="img-fluid" src="https://assetsnffrgf-a.akamaihd.net/assets/m/502012121/univ/art/502012121_univ_sqr_xl.jpg" alt="Paradise Image">
-       </div>
-               </div>
-
-               <!--fourth Widget Content-->
-   <div>
-          <!--Icons for th eright corner-->
-          <div class="absolute-right">
-       <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-       <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
-          </div>
-          <!--Contents-->
-          <div>
-         <p>
-              God’s Kingdom will replace all human governments and rule over the entire earth. (Daniel 2:44; Revelation 16:14) 
-               <br>Once that happens, God’s Kingdom will . . .
-              Remove the wicked, whose selfishness harms us all. “As regards the wicked, they will be cut off from the very earth.”—Proverbs 2:22.<br>
-
-              End all wars. “[God] is making wars to cease to the extremity of the earth.”—Psalm 46:9. <br> 
-<a routerLink="https://www.jw.org/en/bible-teachings/questions/what-gods-kingdom-will-do/">For more reading about this
-              subject please click on this link </a>
-            
-         </p>
-       </div>
-       <!--Second Widget Content-->
-   <div>
-<!--Icons-->
-<div class="absolute-right">
-<a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-<a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
-</div>
-<!--Contents-->
-<div>
-  <!-- JW video Widget-->
-<h3>What Is God’s Kingdom?</h3> Jesus taught about God’s Kingdom more than any other subject. What is the Kingdom? How will it benefit you?
-<div class="absolute-right">
-  <a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-  <a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
-  </div>
- <div class="absolute-left">
-  <iframe width="1820" height="880" src="https://www.youtube.com/embed/Bjc6KujCgjQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
+             <div [(ngSwitch)] = "widget.widgetType">
+          <div *ngSwitchCase = "'HEADING'" >
+            <div [(ngSwitch)]= "widget.size">
+              <div *ngSwitchCase = "1">
+                <h1> {{widget.text}}</h1>  
+              </div>
+              <div *ngSwitchCase = "2">
+                  <h2> {{widget.text}}</h2>  
+                  <div *ngSwitchCase = "3">
+                      <h3> {{widget.text}}</h3>  
+                    </div>
+                    <div *ngSwitchCase = "4">
+                        <h4> {{widget.text}}</h4>  
+                      </div>
+                      <div *ngSwitchCase = "5">
+                          <h5> {{widget.text}}</h5>  
+                        </div>
+                        <div *ngSwitchCase = "6">
+                            <h6> {{widget.text}}</h6>  
+                          </div>
+                </div>
+            </div>
+            <div *ngSwitchCase = "'IMAGE'" > 
+              <img [src] ="widget.url" [style.width] = "widget.width"/>
+            </div> 
+            <div *ngSwitchCase = "'YOUTUBE'" > 
+              <div class = "embed-responsive embed-responsive 16by9">       </div>
+                <iframe [src] ="parseYoutubeSrc(widget.Url)" [style.width] = "widget.width" allowfullscreen></iframe>
   
-<!--Icons after Jw Video Widget-->
-<div class="absolute-right" class="embed-responsive embed-responsive-21by9">
-<a routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid"> <i class="fas fa-cog"></i></a>
-<a routerLink="user/:uid/website/:wid/page/:pid/widget"> <i class="fas fa-bars"></i></a>
-</div> 
-<p> This video details the real biblical definition of What is God's Kingdom really is?
-     </div>
-
-</div>
-</div>
+              </div> 
+          </div>
+          </div>
+        </div>
 <!--Bottom Navigation Bar Footer-->
 <nav class="navbar navbar-light fixed-bottom bg-light">
   <div class="full-width" >
-      <a class="color-red float-right" routerLink="user/:uid"><i class="fas fa-user"></i></a> 
+      <a class="color-red float-right" routerLink="user/{{uid}}"><i class="fas fa-user"></i></a> 
   </div>
 </nav>

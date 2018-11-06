@@ -1,7 +1,7 @@
 export class Website {
     _id?: string;
-    developerId:string;
     name:string;
+    developerId:string;
     description;
 
 }

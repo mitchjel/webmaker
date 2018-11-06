@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Widget } from '../models/widget.model.client';
 // injecting service into module
 
 @Injectable()
 export class WidgetService {
   constructor() {}
-  widgets = [
+  widgets: Widget [] = [
 
     { _id: "123",
      widgetType: "HEADING",
@@ -39,12 +40,12 @@ export class WidgetService {
         url: "https://youtu.be/AM2Ivdi9c4E"
      }
   ];
-  createWidget (widget) {
+  createWidget (widget: Widget) {
       widget._id = Math.random().toString();
       this.widgets.push(widget);
       return widget;
   }
-  findWidgetsByPageId (pageId) {
+  findWidgetsByPageId (pageId: string) {
       let result = [];
       for (let x = 0; x < this.widgets.length; x++){
             if (pageId === this.widgets[x].pageId) {
@@ -53,19 +54,19 @@ export class WidgetService {
       }
       return result;
   }
-  findWidgetById (widgetId) {
+  findWidgetById (widgetId: string) {
     for (let x = 0; x < this.widgets.length; x++) {
         if (widgetId === this.widgets[x]._id) {
             return this.widgets[x];
         }
     }      
   }
-  updateWidget (widget) {
+  updateWidget (widget: Widget) {
       const oldWidget = this.findWidgetById(widget._id);
       const index = this.widgets.indexOf(oldWidget);
           this.widgets[index] = widget;
   }
-  deleteWidget (widgetId) {
+  deleteWidget (widgetId: string) {
     const oldWidget = this.findWidgetById(widgetId);
     const index = this.widgets.indexOf(oldWidget);
     this.widgets.splice(index,1);
