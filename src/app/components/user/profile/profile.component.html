@@ -11,14 +11,13 @@
    <!--Username-->
     <div class="form-group"> 
         <label><b>Username</b></label>
-        <input #userInput = "ngModel" required class="form-control" [(ngModel)] = "user.Username"  name = "username" placeholder =" Enter Username....">
+        <input #userInput= "ngModel" required class="form-control" [(ngModel)] = "user.username"  name = "username" placeholder =" Enter Username....">
     </div>
     <div *ngIf = "userInput.invalid" class = "alert.alert-warning"> Username can't be empty</div>
      <!--Email Address-->
      <div class ="form-group">
            <label for = "email"><b>Email Address</b></label>
            <input class="form-control" name="email"  [(ngModel)] = "user.email" placeholder =" Enter Email Address...">
-
            <small id ="emailHelp" class = "form-text text-muted"> We'll never share your 
                email with anyone else. </small>
       </div>

@@ -1,7 +1,7 @@
 <div class="container" >
   <h1> Login</h1>
   <form  (ngSubmit) = "login()" #myForm= "ngForm">  <!-- #myForm is angular way to create and ID-->
-   <div *ngIf ="errorFlag" class = "alert laert-danger"> The Username and password don't match our records, 
+   <div *ngIf ="errorFlag" class = "alert alert-danger"> Our records indicate that the username and password do not match. Please, try again. 
       please try again! </div>
       <div class="form-group"> 
         <input class="form-control" required name = "username" [(ngModel)]= "username" type="text" placeholder="username" #userInput = "ngModel">
