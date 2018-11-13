@@ -1,7 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# compiled output
-/dist
+# compiled output. Meaning when push our code to github we want dis to be included
 /tmp
 /out-tsc
 

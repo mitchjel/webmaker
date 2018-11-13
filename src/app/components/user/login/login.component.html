@@ -1,13 +1,12 @@
 <div class="container" >
   <h1> Login</h1>
-  <form  (ngSubmit) = "login()" #myForm= "ngForm">  <!-- #myForm is angular way to create and ID-->
+  <form  (ngSubmit) = "logIn()" #myForm= "ngForm">  <!-- #myForm is angular way to create and ID-->
    <div *ngIf ="errorFlag" class = "alert alert-danger"> Our records indicate that the username and password do not match. Please, try again. 
       please try again! </div>
       <div class="form-group"> 
         <input class="form-control" required name = "username" [(ngModel)]= "username" type="text" placeholder="username" #userInput = "ngModel">
       </div>
       <div *ngIf ="userInput.invalid && userInput.touched" class ="alert alert-warning"> Username Field can not be empty! </div>
-
   <div class="form-group">
       <input class="form-control" required name = "password" [(ngModel)]= "password" type= "password" placeholder="password" #passwordInput = "ngModel">
   </div> 
