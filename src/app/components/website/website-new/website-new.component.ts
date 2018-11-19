@@ -22,7 +22,11 @@ export class WebsiteNewComponent implements OnInit {
       this.activatedRoute.params.subscribe(
         (params)=> {
           this.uid = params ['uid'];
-          this.websites = this.websiteService.findWebsitesByUser(this.uid);
+          this.websiteService.findWebsitesByUser(this.uid).subscribe(
+            (websites: Website[]) => {
+              this.websites = websites;
+            }
+          )
         });
 }
     createWebsite() {
@@ -32,8 +36,9 @@ export class WebsiteNewComponent implements OnInit {
           developerId: this.uid
         };
         // Send those data to the data.services
-        this.websiteService.createWebsite(website);
+        this.websiteService.createWebsite(website).subscribe(
+          (website: Website) =>{
         this.router.navigate(["user", this.uid, "website"]);
-    }
-
+    });
+  }
 }

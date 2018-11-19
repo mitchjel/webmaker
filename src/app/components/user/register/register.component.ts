@@ -17,32 +17,34 @@ export class RegisterComponent implements OnInit {
 
   constructor (private userService: UserService, private router : Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
- register () {
-    if ( this.password === this.verifyPassword) {
-        const user:User = this.userService.findUserByUsername (this.username);
-        if (user) {
+ register() {
+      if (this.password !== this.verifyPassword) {
+              this.pwdError = true;
+              this.userError = false;
+      }   
+      else {
+        this.pwdError = false;
+        this.userService.findUserByUsername(this.username).subscribe(
+          (user: User) => {
               this.userError = true;
-              this.pwdError = false;
-        } else {
-          const newUser: User = {
-            username: this.username,
-            password: this.password,
-            firstName:"",
-            lastName:"",
+          },
+          (userError: any) => { 
+          const newUser= {
+          username: this.username,
+          password: this.password,
+             firstName:"",
+             lastName:"",
             email: ""
           };
-        const currentUser: User = this.userService.createUser(newUser);
-        this.router.navigate(["user", currentUser._id]);
-        }
-    } else {
-     this.pwdError = true;
-     this.userError = false;
+          this.userService.createUser(newUser).subscribe
+           (
+                 (user: User) =>{
+            this.router.navigate(["user", user._id]);
+                 });
+            }
+        );
+      }
     }
- }
-
-
-
-}
+  }

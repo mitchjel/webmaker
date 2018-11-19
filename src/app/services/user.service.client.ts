@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model.client';
+import {Http, Response} from "@angular/http" ;
+import { map } from "rxjs/operators"; 
+import { environment} from "../../environments/environment";
 // injecting service into module
 
 @Injectable()
 export class UserService {
-  constructor() { }
+  constructor( private http: Http) { }
+  Uurl = environment.Uurl;
 
-users: User [] = [
+ users: User [] = [
         {_id: "123", 
         username: "alice",
          password: "alice", 
@@ -36,41 +40,49 @@ users: User [] = [
         email: "swang@ulem.org"
         }
         ];
-
-
+ 
   createUser(user: User) {
-    user._id = Math.random().toString();
-    this.users.push(user);
-    return user;
-  }
-  findUserById(userId: string) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-            return this.users[x]; 
-        }
+   // Send post request to the server
+   const url = this.Uurl + "/api/user";
+  return  this.http.post(url,user).pipe(map(
+    (res: Response) =>{
+      return res.json();
+    })
+  );
     }
+
+  findUserById(userId: string) {
+    const url = this.Uurl + "/api/user/" + userId;
+    return this.http.get(url).pipe(map
+      ((res:Response) => {
+        return res.json();
+      })
+    );
   }
      // finding user by username
   findUserByUsername(username: string) { 
-    for ( let j =0; j < this.users.length; j++){
-        if ( this.users[j].username === username){
-               return this.users[j];
-        }
-    }
-
+    const url = this.Uurl + "/api/user?username=" + username;
+    return this.http.get(url).pipe(map
+      ((res:Response) => {
+        return res.json();
+      })
+    );
 }
   findUserByCredentials(username: string, password: string) { 
-    for ( let j =0; j < this.users.length; j++){
-        if ( this.users[j].username === username && this.users[j].password === password){
-               return this.users[j];
-        }
-    }
+    const url = this.Uurl + "/api/user?username=" + username + "&passsword=" + password;
+    return this.http.get(url).pipe(map
+      ((res:Response) => {
+        return res.json();
+      })
+    );
+
   }
   updateUser(user: User) { 
-      const oldUser = this.findUserById(user._id);
-      const index = this.users.indexOf(oldUser);
-      this.users[index] = user;
-   }
- 
-}
-
+    const url = this.Uurl + "/api/user/";
+    return this.http.put(url,user).pipe(map
+      ((res:Response) => {
+        return res.json();
+      })
+    );
+    }
+  }
