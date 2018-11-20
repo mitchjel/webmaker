@@ -1,8 +1,8 @@
 module.exports = function (app) {
     // create website
-    // app.post("/api/website",createWebsite);
+    app.post("/api/website",createWebiste);
         // find All Websites For User
-        app.get("api/user/:uid/website",findAllWebsitesForUser);
+        app.get("/api/user/:uid/website",findAllWebsitesForUser);
         // find website using ID
         app.get("/api/website/:wid",findWebsiteById);
     // update website
@@ -54,7 +54,7 @@ module.exports = function (app) {
 
     function createWebiste(req, res){
         // getting this item from the json body
-        let wbsite = req.body;
+        let website = req.body;
         website._id = Math.random().toString();
         websites.push(website);
         res.json(website);
@@ -63,6 +63,7 @@ module.exports = function (app) {
         let result = [];
         // get the userId from the request
         const userId = req.params["uid"];
+        
       for ( let i = 0; i < websites.length; i++){
              if (websites[i].developerId === userId){
                  result.push(websites[i]);
@@ -73,7 +74,7 @@ module.exports = function (app) {
     }
     function selectWebsiteById (wid){
         for ( let x = 0; x < websites.length; x++){
-            if( websites[x]._id === websiteId){
+            if( websites[x]._id === wid){
                  return websites[x];
             }
        }
@@ -90,7 +91,7 @@ module.exports = function (app) {
     websites[index] = website;
     res.json(website);
    }
-    function deleteWebsite (re, res){
+    function deleteWebsite (req, res){
         //aading a placeholder inside url 
         const websiteId = req.params["wid"];
         const website = selectWebsiteById(websiteId);

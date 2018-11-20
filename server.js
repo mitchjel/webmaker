@@ -25,19 +25,19 @@ app.use(function(req, res, next) {
   next();
 });
 
-const port = process.env.PORT || '3100';
+const port = process.env.PORT || '4100';
 app.set('port', port);
 
 // Create HTTP server
 const server = http.createServer(app);
 
-
 require("./server/app")(app);
-
 // For Build: Catch all other routes and return the index file -- BUILDING
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 // server.listen(port);
-server.listen( port , function() {console.log('Running on ' + app.get('port'));});
+server.listen( port , function() {
+  console.log('Running on ' + app.get('port'));
+});
