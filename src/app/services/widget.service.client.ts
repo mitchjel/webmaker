@@ -9,10 +9,18 @@ import { environment} from "../../environments/environment";
 export class WidgetService {
     constructor (private http: Http){}
   Uurl = environment.Uurl;
-  createWidget (widget: Widget) {}
+  createWidget (widget: Widget) {
+       // Send post request to the server
+   const url = this.Uurl + "/api/widget";
+   return  this.http.post(url,widget).pipe(map(
+     (res: Response) =>{
+       return res.json();
+     })
+   );
+  }
   
   findWidgetsByPageId (pageId: string) { 
-    const url = this.Uurl + `/api/website/${pageId}/page`;
+    const url = this.Uurl + `/api/page/${pageId}/widget`;
     return this.http.get(url).pipe(map
       ((res:Response) => {
         return res.json();

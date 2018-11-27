@@ -64,13 +64,13 @@ widgets: Widget= [
   function selectWidgetById (wgid){
     for ( let x = 0; x < widgets.length; x++){
         if( widgets[x]._id === wgid){
-             return pages[x];
+             return widgets[x];
            }
         }
   }
   function findWidgetById(req, res){
     const wgid =req.params["wgid"];
-    const widget = selectWidgetById (pid);
+    const widget = selectWidgetById (wdgid);
     res.json(widget);
 }
 

@@ -15,7 +15,12 @@ export class WidgetYoutubeComponent implements OnInit {
   wid:string;
   pid: string;
   wgid: string;
-  widget: Widget;
+  widget: Widget ={
+    url: "",
+  widgetType: "IMAGE",
+  width: "",
+  pageId: ""
+  };
     constructor(private activatedRoute: ActivatedRoute, private router:Router, private widgetService: WidgetService) { }
   
     ngOnInit() { 
@@ -24,32 +29,42 @@ export class WidgetYoutubeComponent implements OnInit {
         this.uid = params["wid"];
         this.uid = params["pid"];
         this.uid = params["wgid"];
-        this.widget = this.widgetService.findWidgetById(this.wgid);
-    });
-    }
+        this.widgetService.findWidgetById(this.wgid).subscribe(
+          (widget: Widget) =>{
+ this.widget = widget;
+          });
+        });
+      }
     update () {
-      this.widgetService.updateWidget(this.widget);
-      this.widgetService.deleteWidget(this.wgid);
-      this.router.navigate([
-        "user",
-       this.uid,
-      "website",
-      this.pid,
-       "page",
-        this.pid, 
-       "widget"]);
+      this.widgetService.updateWidget(this.widget).subscribe(
+        (widget: Widget) =>{
+                      // navigate 
+          this.router.navigate([
+            "user",
+           this.uid,
+          "website",
+          this.pid,
+           "page",
+            this.pid, 
+           "widget"
+          ]);
+        });
     }
     delete () {
-      this.widgetService.deleteWidget(this.wgid);
-      this.router.navigate([
-        "user",
-       this.uid,
-      "website",
-      this.pid,
-       "page",
-        this.pid, 
-       "widget"]);
+      this.widgetService.deleteWidget(this.wgid).subscribe(
+        ( widgets: Widget[]) => {
+          this.router.navigate([
+            "user",
+           this.uid,
+          "website",
+          this.pid,
+           "page",
+            this.pid, 
+           "widget"
+          ]);
+  
+        });
+     
     }
   
   }
-  

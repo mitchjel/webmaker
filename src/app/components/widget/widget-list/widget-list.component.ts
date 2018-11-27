@@ -25,7 +25,11 @@ export class WidgetListComponent implements OnInit {
         this.uid = params["uid"];
         this.pid = params["pid"];
         this.wid = params["wid"];
-         this.widgetService.findWidgetsByPageId(this.pid);
+         this.widgetService.findWidgetsByPageId(this.pid).subscribe(
+           (widgets: Widget[]) =>{
+            this.widgets = widgets;
+           }
+         );
       });
       }
       parseYoutubeSource(src) {

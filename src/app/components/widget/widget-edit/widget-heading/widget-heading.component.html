@@ -1,8 +1,8 @@
    <!--Navigation bar-->
    <nav class="navbar navbar-light fixed-top bg-light">
-    <a class="color-red" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
+    <a class="color-red" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/"><i class="fas fa-chevron-left"></i></a>
     <a class="navbar-brand" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}"> Edit Widget</a>
-    <button form= "myForm" [disabled] ="" class="float-right color-red btn bg-transparent" ><i class="fas fa-check"></i></button>  
+    <button form= "myForm" class="float-right color-red btn bg-transparent" ><i class="fas fa-check"></i></button>  
 </nav>
 <!--List on the middle of the  edit widget-->
 <div class="container"> 
@@ -10,12 +10,12 @@
         <!--Text for the main page-->
         <div class="form-group">
                 <label for="text"> <b>Text</b></label>
-                <input  palceholder = "Widget Text" name = "text" [(ngModel)]= "widget.text"type="text" id="text" class="form-control">
+                <input name = "text" [(ngModel)]= "widget.text" type="text"  palceholder = "Widget Text"  id="text" class="form-control">
             </div>
             <!--Size for the main page-->
             <div class="form-group">
                     <label for="size"> <b>Size</b></label>
-                    <input name = "size" [(ngModel)]= "widget.size" type="number" id="size" class="form-control">
+                    <input name = "size" [(ngModel)]= "widget.size" type="number" id="size" class="form-control" />
                 </div>
     
             <button type = "button" (click) = "delete()" class="btn btn-danger btn-block" > Delete</button>
@@ -23,8 +23,9 @@
 </div>
    
  <!--Bottom Navigation Bar and Icon -->
-<nav class="navbar navbar-light fixed-bottom bg-light">
+
+<footer nav class="navbar navbar-light fixed-bottom bg-light">
     <div class="full-width" >
         <a class="color-red float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a> 
     </div>
-  </nav>
+</footer>
