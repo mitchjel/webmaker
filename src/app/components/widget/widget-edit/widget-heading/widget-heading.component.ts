@@ -13,7 +13,7 @@ uid: string;
 wid:string;
 pid: string;
 wgid: string;
-widget:Widget ={
+widget :Widget ={
   text: "",
   widgetType: "",
   pageId: ""
@@ -21,16 +21,16 @@ widget:Widget ={
   constructor(private activatedRoute: ActivatedRoute, private router:Router, private widgetService: WidgetService ) { }
 
   ngOnInit() { 
-    this.activatedRoute.params.subscribe(params =>{
+    this.activatedRoute.params.subscribe(params => {
       this.uid = params["uid"];
-      this.uid = params["wid"];
-      this.uid = params["pid"];
-      this.uid = params["wgid"];
+      this.wid = params["wid"];
+      this.pid = params["pid"];
+      this.wgid = params["wgid"];
        this.widgetService.findWidgetById(this.wgid).subscribe(
-         (widget: Widget) =>{
+         (widget: Widget) => {
 this.widget = widget;
          });
-  });
+    });
   }
   update () {
     this.widgetService.updateWidget(this.widget).subscribe(

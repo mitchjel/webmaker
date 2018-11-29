@@ -37,8 +37,8 @@ export class WebsiteEditComponent implements OnInit {
               this.websites = websites;
           });
  this.websiteService.findWebsiteById(this.wid).subscribe(
-   (website: Website[]) =>{
-     this.websites = website;
+   (website: Website) =>{
+     this.website = website;
    });
         });
       }
@@ -50,13 +50,13 @@ export class WebsiteEditComponent implements OnInit {
            developerId: this.uid
         };
         this.websiteService.updateWebsite(newWeb).subscribe(
-          (website: Website[]) =>{
+          (website: Website) =>{
             this.router.navigate(["user",this.uid,"website"]);
           });
         }
         delete(){
           this.websiteService.deleteWebsite(this.wid).subscribe(
-            (website: Website[]) => {
+            (website: Website) => {
               this.router.navigate(["user",this.uid,"website"]);
           });
        }

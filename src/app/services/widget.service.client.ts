@@ -12,8 +12,8 @@ export class WidgetService {
   createWidget (widget: Widget) {
        // Send post request to the server
    const url = this.Uurl + "/api/widget";
-   return  this.http.post(url,widget).pipe(map(
-     (res: Response) =>{
+   return  this.http.post(url, widget).pipe(map(
+     (res: Response) => {
        return res.json();
      })
    );
@@ -28,7 +28,7 @@ export class WidgetService {
     );
   }
   findWidgetById (widgetId: string) {
-    const url = this.Uurl + "/api/widget/" + widgetId;
+    const url = this.Uurl + `/api/widget/${widgetId}`;
     return this.http.get(url).pipe(
         map((res: Response) => {
         return res.json();
@@ -36,17 +36,17 @@ export class WidgetService {
   );
   } 
   updateWidget (widget: Widget) {
-    const uUrl = this.Uurl+ "/api/widget";
-    return this.http.put(uUrl, widget).pipe(map
-      ((res:Response) => {
+    const url = this.Uurl+ "/api/widget";
+    return this.http.put(url, widget).pipe(map
+      ((res: Response) => {
         return res.json();
       })
     );
   }
   deleteWidget (widgetId: string){
-    const uUrl = this.Uurl +"/api/widget/" + widgetId;
-    return this.http.delete(uUrl,).pipe(map
-      ((res:Response) => {
+    const url = this.Uurl +"/api/widget/" + widgetId;
+    return this.http.delete(url).pipe(map
+      ((res: Response) => {
         return res.json();
       })
     );

@@ -14,14 +14,14 @@ export class PageService {
   createPage (page) {
            // Send post request to the server
    const url = this.Uurl + "/api/page";
-   return  this.http.post(url,page).pipe(map(
+   return  this.http.post(url, page).pipe(map(
      (res: Response) =>{
        return res.json();
      })
    );
   }
   findPagesByWebsiteId (websiteId: string ) {
-    const url = this.Uurl + `/api/website/$ {websiteId}/page`;
+    const url = this.Uurl + `/api/website/${websiteId}/page`;
     return this.http.get(url).pipe(map
       ((res:Response) => {
         return res.json();
@@ -38,16 +38,16 @@ export class PageService {
      }
 
      updatePage (page: Page) {
-        const uUrl = this.Uurl+ "/api/page";
-        return this.http.put(uUrl, page).pipe(map
+        const url = this.Uurl+ "/api/page";
+        return this.http.put(url, page).pipe(map
           ((res:Response) => {
             return res.json();
           })
         );
       }
           deletePage (pageId: string) {
-            const uUrl = this.Uurl +"/api/page/" + pageId;
-            return this.http.delete(uUrl,).pipe(map
+            const url = this.Uurl +"/api/page/" + pageId;
+            return this.http.delete(url,).pipe(map
               ((res:Response) => {
                 return res.json();
               })

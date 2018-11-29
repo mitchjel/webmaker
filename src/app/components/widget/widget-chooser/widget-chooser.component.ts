@@ -19,8 +19,8 @@ wid: string;
     this.activatedRoute.params.subscribe(
       params =>{
         this.uid = params["uid"];
-        this.uid = params["pid"];
-        this.uid = params["wid"];
+        this.pid = params["pid"];
+        this.wid = params["wid"];
       });
     }
          create(type: string) {
@@ -41,8 +41,7 @@ wid: string;
               widget._id
             ]);
             });
-     
-
+    
         }
   }
 

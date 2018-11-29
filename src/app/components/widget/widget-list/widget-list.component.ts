@@ -28,9 +28,8 @@ export class WidgetListComponent implements OnInit {
          this.widgetService.findWidgetsByPageId(this.pid).subscribe(
            (widgets: Widget[]) =>{
             this.widgets = widgets;
-           }
-         );
-      });
+           });
+        });
       }
       parseYoutubeSource(src) {
         // Making sure of youtube video is secure or embeded

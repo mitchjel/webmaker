@@ -8,7 +8,7 @@ app.get ("/api/website/:wid/page",findAllPagesForWebsite);
  // Update page
  app.put("/api/page",updatePage);
  // Deleting page
- app.post("/api/page/:pid",deletePage);
+ app.delete("/api/page/:pid",deletePage);
 
  pages = 
   [
@@ -54,9 +54,9 @@ function findAllPagesForWebsite(req, res){
 }
   // create function selectWebsiteById to call when
   // finding update and delete pages
-function selectPageById (wid){
+function selectPageById (pid){
     for ( let x = 0; x < pages.length; x++){
-        if( pages[x]._id === id){
+        if( pages[x]._id === pid){
              return pages[x];
            }
         }
@@ -64,7 +64,7 @@ function selectPageById (wid){
 
     function findPageById(req, res){
         const pid =req.params["pid"];
-        const page = selectPageById (pid);
+        const page =selectPageById (pid);
         res.json(page);
     }
 
@@ -76,11 +76,11 @@ function selectPageById (wid){
      res.json(page);
     }
     function deletePage (req, res){
-        //aading a placeholder inside url 
+        //ading a placeholder inside url 
         const pageId = req.params["pid"];
         const page = selectPageById(pageId);
         const index = websites.indexOf(page);
         pages.splice(index,1);
-        res.json(websites);
+        res.json(pages);
     }
 };

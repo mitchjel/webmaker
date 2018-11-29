@@ -7,7 +7,7 @@
 <!--Lists-->
 <div class="container-fluid">
 <ul class="list-group">
-<li class="list-group-item" *ngFor = "let page of pages">
+<li class="list-group-item" *ngFor="let page of pages">
 <a routerLink="/user/{{uid}}/website/{{wid}}/page/{{page._id}}/widget">{{page.name}}</a>
 <a class="float-right " routerLink="/user/{{uid}}/website/{{wid}}/page/{{page._id}}"><i class="fas fa-cog"></i></a>
 </li>

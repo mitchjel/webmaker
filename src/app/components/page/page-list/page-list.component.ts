@@ -21,7 +21,7 @@ export class PageListComponent implements OnInit {
     this.wid= params['wid'];
     this.uid = params['uid'];
     this.pageService.findPagesByWebsiteId(this.wid).subscribe(
-      ( pages: Page []) =>{
+      ( pages: Page[]) =>{
               this.pages = pages;
       });
   });

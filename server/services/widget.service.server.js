@@ -6,7 +6,7 @@ app.get("/api/widget/:wgid", findWidgetById );
 app.put("/api/widget", updateWidget );
 app.delete("/api/widget/:wgid",deleteWidget);
 
-widgets: Widget= [
+widgets=[
 
     { _id: "123",
      widgetType: "HEADING",
@@ -23,8 +23,8 @@ widgets: Widget= [
     { _id: "345",
      widgetType: "IMAGE",
       pageId: "321",
-       width: "100%",
-        url: "http://lorempixel.com/400/200/"
+       width: "60%",
+        url: "https://bit.ly/2AvqRfu" 
     },
   
      { _id: "567",
@@ -45,10 +45,10 @@ widgets: Widget= [
         // getting this item from the json body
     let  widget = req.body;
     widget._id = Math.random().toString();
-    widget.push( widget);
+    widgets.push( widget);
     res.json( widget);
   }
-  function findAllWidgetsForPage (req, res) {
+  function findAllWidgetsForPage(req, res) {
     let result = [];
     // get the userId from the request
     const pid = req.params["pid"];
@@ -70,7 +70,7 @@ widgets: Widget= [
   }
   function findWidgetById(req, res){
     const wgid =req.params["wgid"];
-    const widget = selectWidgetById (wdgid);
+    const widget = selectWidgetById (wgid);
     res.json(widget);
 }
 
