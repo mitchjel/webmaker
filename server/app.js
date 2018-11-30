@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  // linking mongoose database 
+  // linking mongoose database with server
     require ("./models/models.server");
     // import some libraries server side services
  require("./services/user.service.server.js")(app);

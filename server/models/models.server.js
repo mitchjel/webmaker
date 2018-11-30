@@ -16,5 +16,5 @@ var mongoose = require("mongoose");
 var db = mongoose.connect(connectionString,  
     {useNewUrlParser: true}
     );
-// // export the connection 
+ // export the connection 
 module.exports = db;

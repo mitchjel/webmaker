@@ -1,4 +1,6 @@
 module.exports = function(app) {
+    // import model
+    const userModel = require("../models/user/user.model.server")
        // different web services to handle different request (paths and fucntions)
        // CreateUser 
        app.post("/api/user",createUser);
@@ -43,14 +45,12 @@ users= [
     ];
         //request and response for function createUser
     function createUser(req, res){
-        // Syncing user request to the body and ser
-            var user = req.body;
-              user._id = Math.random().toString();
-                users.push(user);
-                // sending response (user object) on json format to the client
-                res.json(user);
-    
-    }
+       var user = req.body; // use predifined function then similar to subscribe
+       userModel.createUser(user).then(
+            (data) =>{
+                res.json(data);
+            });
+        }
         function findUserById(req, res){
             //getting the userId from req paramater
             const userId = req.params["uid"];
