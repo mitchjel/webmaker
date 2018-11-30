@@ -8,7 +8,7 @@ const UserModel = mongoose.model("UserModel", UserSchema);
 UserModel.model.createUser = createUser;
 UserModel.findUserById = findUserById;
 UserModel.findUserByUsername = findUserByUsername;
-UserModel.findUserByCreadentials = findUserByCreadentials;
+UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.updateUser = updateUser;
 
 // implement functions
@@ -23,13 +23,14 @@ function findUserById (uid) {
 function findUserByUsername(username) {
     // findOne to look for one single item matches the given item
     return UserModel.findOne({username: username});
-
 }
 
-function findUserByCreadentials(username, password){
+function findUserByCredentials(username, password){
     return UserModel.findOne({username: username, password: password});
 }
 
 function updateUser(uid, user){
     return UserModel.update({_id:uid}, user);
 }
+
+module.exports = UserModel;
