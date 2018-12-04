@@ -5,7 +5,7 @@ const UserSchema = require("./user.schema.server");
 const UserModel = mongoose.model("UserModel", UserSchema);
 
 // declare all fucntions
-UserModel.model.createUser = createUser;
+UserModel.createUser = createUser;
 UserModel.findUserById = findUserById;
 UserModel.findUserByUsername = findUserByUsername;
 UserModel.findUserByCredentials = findUserByCredentials;
