@@ -11,50 +11,40 @@ module.exports = function(app) {
        app.get("/api/user", findUser);
        // Update User
        app.put("/api/user",updateUser);
+
         //request and response for function createUser
-        function createUser(req, res) {
+       async function createUser(req, res) {
             var user = req.body;
-           userModel.createUser(user).then(
-                (data) => {
-                    res.json(data);
-                });
-          }
+            const data = await userModel.createUser(user);
+            res.json(data);
+       }
         
-           function findUserById(req, res) {
+         async  function findUserById(req, res) {
             const userId = req.params["uid"];
-             userModel.findUserById(userId).then(
-                 (data) =>{
+            const data = await userModel.findUserById(userId); 
                      res.json(data);
-                 });
           }
         
-           function findUser(req, res) {
+          async function findUser(req, res) {
             const username = req.query["username"];
             const password = req.query["password"];
             if (username && password) {
-              userModel.findUserByCredentials(username, password).then(
-                  (data) => {
+            const data = await userModel.findUserByCredentials(username, password);
                       res.json(data);
-                  });
               return;
             }
         
             if (username) {
-              userModel.findUserByUsername(username).then(
-                  (data) => {
+              const data = await userModel.findUserByUsername(username);
                         res.json(data);
-                  });
               return;
             }
           }
         
-           function updateUser(req, res) {
+          async function updateUser(req, res) {
             const user = req.body;
             const uid = user._id;
-             userModel.updateUser(uid, user).then(
-                 (daa) =>{
-                     res.json(data);
-                 });
-            
+            const data = await userModel.updateUser(uid, user);
+                res.json(data);
           }
         };
