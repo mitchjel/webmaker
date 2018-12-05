@@ -10,77 +10,68 @@ app.get ("/api/website/:wid/page",findAllPagesForWebsite);
  // Deleting page
  app.delete("/api/page/:pid",deletePage);
 
- pages = 
-  [
-    { _id: "321", 
-    name: "Post 1",
-     websiteId: "456",
-      title: "Lorem"
-     },
+//  pages = 
+//   [
+//     { _id: "321", 
+//     name: "Post 1",
+//      websiteId: "456",
+//       title: "Lorem"
+//      },
   
-    { _id: "432",
-     name: "Post 2",
-      websiteId: "456",
-      title: "Lorem"
-     },
+//     { _id: "432",
+//      name: "Post 2",
+//       websiteId: "456",
+//       title: "Lorem"
+//      },
   
-    { _id: "543", 
-    name: "Post 3",
-     websiteId: "456",
-     title: "Lorem" 
-    }
-  ];
-//  Create all Functions
-function createPage(req, res){
+//     { _id: "543", 
+//     name: "Post 3",
+//      websiteId: "456",
+//      title: "Lorem" 
+//     }
+//   ];
+
+// CRUD functions for User
+  async function createPage(req, res){
     // getting this item from the json body
     let page = req.body;
-    page._id = Math.random().toString();
-    pages.push(page);
+    const data = await pageModel.createPage(page);
     res.json(page);
 }
 
-function findAllPagesForWebsite(req, res){
-    let result = [];
+ async function findAllPagesForWebsite(req, res){
     // get the userId from the request
-    const wid = req.params["wid"];
-    
-  for ( let i = 0; i < pages.length; i++){
-         if (pages[i].websiteId === wid){
-             result.push(pages[i]);
-         }
-  }
-  // send user array to the client
-  res.json(result);
+    const wid = req.params["wid"];    
+const data = await pageModel.findAllPagesForWebsite(pageId);
+  res.json(data);
 }
-  // create function selectWebsiteById to call when
-  // finding update and delete pages
-function selectPageById (pid){
-    for ( let x = 0; x < pages.length; x++){
-        if( pages[x]._id === pid){
-             return pages[x];
-           }
-        }
-    }
 
-    function findPageById(req, res){
+//   create function selectWebsiteById to call when
+//   finding update and delete pages
+// function selectPageById (pid){
+//     for ( let x = 0; x < pages.length; x++){
+//         if( pages[x]._id === pid){
+//              return pages[x];
+//            }
+//         }
+//     }
+
+    async function findPageById(req, res){
         const pid =req.params["pid"];
-        const page =selectPageById (pid);
-        res.json(page);
+        const data = await pageModel.findPageById(pid);
+        res.json(data);
     }
 
-    function updatePage(req, res){
+    async function updatePage(req, res){
         const page = req.body;
-     const oldPage = selectPageById(page._id);
-     const index = pages.indexOf(oldPage); // looking for where the page is located
-    this.pages[index] = page;
-     res.json(page);
+        const pid = page._id;
+        const data = await pageModel.updatePage(pid, page);
+     res.json(data);
     }
-    function deletePage (req, res){
-        //ading a placeholder inside url 
+     async function deletePage (req, res){
         const pageId = req.params["pid"];
-        const page = selectPageById(pageId);
-        const index = websites.indexOf(page);
-        pages.splice(index,1);
-        res.json(pages);
+        const data = await pageModel.deleteOne(pageId);
+        res.json(data);
     }
 };
+

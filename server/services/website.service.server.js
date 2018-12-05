@@ -1,7 +1,7 @@
 module.exports = function (app) {
     var websiteModel = require("../models/website/website.model.server");
     // create website
-    app.post("/api/website",createWebiste);
+    app.post("/api/website",createWebsite);
         // find All Websites For User
         app.get("/api/user/:uid/website",findAllWebsitesForUser);
         // find website using ID
