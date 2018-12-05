@@ -43,7 +43,7 @@ app.get ("/api/website/:wid/page",findAllPagesForWebsite);
  async function findAllPagesForWebsite(req, res){
     // get the userId from the request
     const wid = req.params["wid"];    
-const data = await pageModel.findAllPagesForWebsite(pageId);
+const data = await pageModel.findAllPagesForWebsite(wid);
   res.json(data);
 }
 

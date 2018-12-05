@@ -11,8 +11,8 @@ PageModel.updatePage = updatePage;
 PageModel.deletePage = deletePage;
 
 // Implement all functions
-function createPage (page) {
-    return UserModel.createPage(page);
+function createPage(page) {
+    return PageModel.create(page);
 }
 
 function findAllPagesForWebsite (wid) {
@@ -22,7 +22,7 @@ function findPageById (pid){
     return PageModel.findPageById(pid);
 }
 function updatePage(pid, page){
-    return PageModel.updatePage({_id: pid}, page);
+    return PageModel.updateOne({_id: pid}, page);
 }
 function deletePage (pid){
     return PageModel.deleteOne({_id: pid});
