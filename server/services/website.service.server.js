@@ -1,7 +1,7 @@
 module.exports = function (app) {
     var websiteModel = require("../models/website/website.model.server");
     // create website
-    app.post("/api/website",createWebsite);
+    app.post("/api/website", createWebsite);
         // find All Websites For User
         app.get("/api/user/:uid/website",findAllWebsitesForUser);
         // find website using ID
@@ -10,7 +10,7 @@ module.exports = function (app) {
     app.put("/api/website/:wid",updateWebsite);
     // delete website
     app.delete("/api/website/:wid",deleteWebsite);
-   async function createWebiste(req, res){
+   async function createWebsite(req, res){
         // getting this item from the json body
         let website = req.body;
         const datat = await websiteModel.createWebisteForUser(website);
