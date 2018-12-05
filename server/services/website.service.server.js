@@ -13,7 +13,7 @@ module.exports = function (app) {
    async function createWebsite(req, res){
         // getting this item from the json body
         let website = req.body;
-        const datat = await websiteModel.createWebisteForUser(website);
+        const datat = await websiteModel.createWebsiteForUser(website);
         res.json(data);
     }
      async function findAllWebsitesForUser(req, res){

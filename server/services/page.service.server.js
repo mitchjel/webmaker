@@ -1,4 +1,5 @@
 module.exports = function(app) {
+    var pageModel = require("../models/page/page.model.server");
 
     app.post("/api/page", createPage);
 // Find pages for website

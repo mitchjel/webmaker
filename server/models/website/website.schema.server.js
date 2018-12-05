@@ -1,4 +1,5 @@
 const mongoose = require ("mongoose") ;
+
 const WebsiteSchema = mongoose.Schema({
     name: String,
     // DeveloperId refers to id of user must be the predefine property Objectid
@@ -9,4 +10,4 @@ const WebsiteSchema = mongoose.Schema({
 },
     {collection: "website"}
 );
-module.exports = WebsiteSchema
+module.exports = WebsiteSchema;
