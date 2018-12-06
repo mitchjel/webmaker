@@ -19,7 +19,7 @@ function findAllPagesForWebsite (wid) {
     return PageModel.find({websiteId: wid});
 } // call mongoose function instead itself to clarify it
 function findPageById (pid){
-    return PageModel.findPageById(pid);
+    return PageModel.findById(pid);
 }
 function updatePage(pid, page){
     return PageModel.updateOne({_id: pid}, page);
