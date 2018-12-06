@@ -7,7 +7,7 @@ module.exports = function (app) {
         // find website using ID
         app.get("/api/website/:wid",findWebsiteById);
     // update website
-    app.put("/api/website/:wid",updateWebsite);
+    app.put("/api/website",updateWebsite);
     // delete website
     app.delete("/api/website/:wid",deleteWebsite);
    async function createWebsite(req, res){
@@ -31,7 +31,7 @@ module.exports = function (app) {
 
    async function updateWebsite(req, res){
        const website = req.body;
-       const wid = webiste._id;
+       const wid = website._id;
  const data = await websiteModel.updateWebsite(wid, website);
     res.json(data);
    }
