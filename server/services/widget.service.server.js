@@ -10,7 +10,7 @@ app.delete("/api/widget/:wgid",deleteWidget);
   async function createWidget(req, res){
         // getting this item from the json body
     let  widget = req.body;
-    const data = await widgetModel.create(widget);
+    const data = await widgetModel.createWidget(widget);
     res.json(data);
   }
   async function findAllWidgetsForPage(req, res) {

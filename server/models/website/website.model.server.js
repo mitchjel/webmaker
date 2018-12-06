@@ -19,7 +19,7 @@ function findAllWebsitesForUser(uid){
     return WebsiteModel.find({developerId: uid});
 }
  function findWebsiteById(wid){
-     return WebsiteModel.findWebsiteById(wid);
+     return WebsiteModel.findById(wid);
     }
     function updateWebsite(wid, website) {
         return wWebsiteModel.update({_id: wid}, website);
