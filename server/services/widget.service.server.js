@@ -1,4 +1,5 @@
 module.exports = function(app) {
+    var widgetModel = require ("../models/widget/widget.model.server");
 // creation of all widget services
 app.post("/api/widget",createWidget);
 app.get("/api/page/:pid/widget", findAllWidgetsForPage);
@@ -6,87 +7,35 @@ app.get("/api/widget/:wgid", findWidgetById );
 app.put("/api/widget", updateWidget );
 app.delete("/api/widget/:wgid",deleteWidget);
 
-widgets=[
-
-    { _id: "123",
-     widgetType: "HEADING",
-      pageId: "321",
-       size: 2,
-        text: "GIZMODO"},
-    { _id: "234",
-     widgetType: "HEADING",
-      pageId: "321",
-       size: 4,
-        text: "Lorem ipsum"
-    },
-  
-    { _id: "345",
-     widgetType: "IMAGE",
-      pageId: "321",
-       width: "60%",
-        url: "https://bit.ly/2AvqRfu" 
-    },
-  
-     { _id: "567",
-      widgetType: "HEADING",
-       pageId: "321",
-        size: 4,
-         text: "Lorem ipsum"
-        },
-  
-    { _id: "678",
-     widgetType: "YOUTUBE",
-      pageId: "321",
-       width: "100%",
-        url: "https://youtu.be/AM2Ivdi9c4E"
-     }
-  ];
-  function createWidget(req, res){
+  async function createWidget(req, res){
         // getting this item from the json body
     let  widget = req.body;
-    widget._id = Math.random().toString();
-    widgets.push( widget);
-    res.json( widget);
+    const data = await widgetModel.create(widget);
+    res.json(data);
   }
-  function findAllWidgetsForPage(req, res) {
-    let result = [];
-    // get the userId from the request
+  async function findAllWidgetsForPage(req, res) {
+  
     const pid = req.params["pid"];
-  for ( let i = 0; i < widgets.length; i++){
-         if (widgets[i].pageId === pid){
-             result.push(widgets[i]);
-         }
-  }
-  // send user array to the client
-  res.json(result);
+  const data = await widgetModel.findAllWidgetsForPage(pid);
+res.json(data);
   }
 
-  function selectWidgetById (wgid){
-    for ( let x = 0; x < widgets.length; x++){
-        if( widgets[x]._id === wgid){
-             return widgets[x];
-           }
-        }
-  }
-  function findWidgetById(req, res){
+  async function findWidgetById(req, res){
     const wgid =req.params["wgid"];
-    const widget = selectWidgetById (wgid);
-    res.json(widget);
-}
+    const data = await widgetModel.findOne(wgid);
+    res.json(data);
+  }
 
-function updateWidget(req, res){
+async function updateWidget(req, res){
     const widget = req.body;
- const oldWidget = selectWidgetById(widget._id);
- const index = widgets.indexOf(oldWidget); // looking for where the page is located
-this.widgets[index] = widget;
- res.json(widget);
+    const data = await widgetModel.updateOne(widget);
+    res.json(data);
 }
-function deleteWidget (req, res){
+async function deleteWidget (req, res){
     //aading a placeholder inside url 
     const wgid = req.params["wgid"];
-    const widget = selectWidgetById(wgid);
-    const index = widgets.indexOf(widget);
-    widgets.splice(index, 1);
-    res.json(widgets);
+    const data = await widgetModel.deleteOne(wgid);
+    res.json(data);
+    
 }
 };

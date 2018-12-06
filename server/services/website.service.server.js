@@ -36,7 +36,7 @@ module.exports = function (app) {
     res.json(data);
    }
    async function deleteWebsite (req, res){
-        //aading a placeholder inside url 
+        //ading a placeholder inside url 
         const websiteId = req.params["wid"];
        const data = await websiteModel.deleteWebsite(websiteId);
         res.json(data);
