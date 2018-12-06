@@ -50,7 +50,7 @@ const data = await pageModel.findAllPagesForWebsite(wid);
     }
      async function deletePage (req, res){
         const pageId = req.params["pid"];
-        const data = await pageModel.deleteOne(pageId);
+        const data = await pageModel.deletePage(pageId);
         res.json(data);
     }
 };

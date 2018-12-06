@@ -3,7 +3,7 @@ var PageSchema = mongoose.Schema(
     {
             websiteId: {type: mongoose.Schema.Types.ObjectId, ref: "PageModel"},
             name: String,
-            description: String,
+            title: String,
             dateCreated: {type: Date, default: Date.now}
     },
             {collection: "page"}
