@@ -22,19 +22,19 @@ res.json(data);
 
   async function findWidgetById(req, res){
     const wgid =req.params["wgid"];
-    const data = await widgetModel.findOne(wgid);
+    const data = await widgetModel.findWidgetById(wgid);
     res.json(data);
   }
 
 async function updateWidget(req, res){
     const widget = req.body;
-    const data = await widgetModel.updateOne(widget);
+    const wgid = widget._id;
+    const data = await widgetModel.updateWidget(wgid, widget);
     res.json(data);
 }
 async function deleteWidget (req, res){
-    //aading a placeholder inside url 
     const wgid = req.params["wgid"];
-    const data = await widgetModel.deleteOne(wgid);
+    const data = await widgetModel.deleteWidget(wgid);
     res.json(data);
     
 }
