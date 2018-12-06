@@ -16,8 +16,8 @@ function createPage(page) {
 }
 
 function findAllPagesForWebsite (wid) {
-    return PageModel.findAllPagesForWebsite({websiteId: wid});
-}
+    return PageModel.find({websiteId: wid});
+} // call mongoose function instead itself to clarify it
 function findPageById (pid){
     return PageModel.findPageById(pid);
 }

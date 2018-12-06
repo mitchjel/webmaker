@@ -1,7 +1,7 @@
 // Import mongoose library
 const mongoose = require ("mongoose");
 // Import website schema
-const WebsiteSchema = require ("./website.Schema.server")
+const WebsiteSchema = require("./website.schema.server")
 // Model creation
 const WebsiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
 
