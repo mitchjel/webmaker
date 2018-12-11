@@ -32,8 +32,7 @@ const APP_ROUTES : Routes = [
  {path: "user/:uid/website/:wid/page/:pid/widget", component:WidgetListComponent, canActivate: [AuthGuard]},
  {path: "user/:uid/website/:wid/page/:pid/widget/new", component:WidgetChooserComponent, canActivate: [AuthGuard]},
  {path: "user/:uid/website/:wid/page/:pid/widget/:wgid", component:WidgetEditComponent, canActivate: [AuthGuard]},
- { path: "user-list", 
-component: UserListComponent, canActivate: [AdminGuard]} 
+ { path: "user-list", component: UserListComponent, canActivate: [AdminGuard]} 
  // so on
 ];
 
