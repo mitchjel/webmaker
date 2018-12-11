@@ -16,7 +16,7 @@ app.get ("/api/website/:wid/page",findAllPagesForWebsite);
     // getting this item from the json body
     let page = req.body;
     const data = await pageModel.createPage(page);
-    res.json(page);
+    res.json(data);
 }
 
  async function findAllPagesForWebsite(req, res){
@@ -26,15 +26,6 @@ const data = await pageModel.findAllPagesForWebsite(wid);
   res.json(data);
 }
 
-//   create function selectWebsiteById to call when
-//   finding update and delete pages
-// function selectPageById (pid){
-//     for ( let x = 0; x < pages.length; x++){
-//         if( pages[x]._id === pid){
-//              return pages[x];
-//            }
-//         }
-//     }
 
     async function findPageById(req, res){
         const pid =req.params["pid"];

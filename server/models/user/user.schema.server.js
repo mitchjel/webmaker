@@ -3,6 +3,7 @@ var mongoose = require ("mongoose");
 var UserSchema = mongoose.Schema({
     username: String,
     password: String,
+    admin: { type: Boolean, default: "false" },
     // in case no first and last name provided a default will be created
     firstName: {type: String, default: ""},
     lastName: {type: String, default: ""},

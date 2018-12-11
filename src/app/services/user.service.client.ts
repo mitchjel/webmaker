@@ -1,45 +1,100 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model.client';
-import {Http, Response} from "@angular/http" ;
+import {Http, Response, RequestOptions} from "@angular/http" ;
 import { map } from "rxjs/operators"; 
 import { environment} from "../../environments/environment";
+import { SharedService } from "./shared.service.client";
+import { Router } from '@angular/router';
+
 // injecting service into module
 
 @Injectable()
 export class UserService {
-  constructor( private http: Http) { }
+  constructor( private http: Http, private sharedService: SharedService, private router: Router) { }
   Uurl = environment.Uurl;
+  options = new RequestOptions();
 
- users: User [] = [
-        {_id: "123", 
-        username: "alice",
-         password: "alice", 
-         firstName: "Alice", 
-         lastName: "Wonder",
-          email: "alice@gmail.com"
-        },
-        {_id: "234",
-         username: "bob",
-          password: "bob", 
-          firstName: "Bob",
-           lastName: "Marley",
-            email: "bob@whatever.com"
-        },
-        {_id: "345", 
-        username: "charly",
-         password: "charly",
-        firstName: "Charly", 
-        lastName: "Garcia",
-         email: "charly@hotmail.com"
-        },
-        {_id: "456", 
-        username: "shiyu", 
-        password: "shiyu", 
-        firstName: "Shiyu", 
-        lastName: "Wang",
-        email: "swang@ulem.org"
-        }
-        ];
+  // Implementation Login function
+  login(username: string, password: string) {
+    // use this to authenticate
+    this.options.withCredentials = true;
+ 
+    const url = this. Uurl + "/api/login";
+    const user = {
+      username: username,
+      password: password
+    };
+ // Enable Cross_Origin features
+    return this.http.post(url, user, this.options).pipe(
+      map((res: Response) => {
+        return res.json();
+      })
+    );
+  }
+  // Log out Function Implementation
+  logout() {
+    this.options.withCredentials = true;
+    const url = this.Uurl + "/api/logout";
+    return this.http.post(url, "", this.options).pipe(
+      map((res: Response) => {
+        // Send user feedback log out
+        this.sharedService.user = 0;
+        return res;
+      })
+    );
+  }
+ // Funct Register 
+ register(user: User) {
+  // this communication will be secured
+  this.options.withCredentials = true;
+  const url = this.Uurl + "/api/register";
+  return this.http.post(url, user, this.options).pipe(
+    map((res: Response) => {
+      return res.json();
+    })
+  );
+}
+  // LoggedIn Function implementation
+  loggedIn() {
+    this.options.withCredentials = true;
+    return this.http
+      .post(this. Uurl + "/api/loggedIn", "", this.options)
+      .pipe(
+        map((res: Response) => {
+          const user = res.json();
+          // Check if user alredy logged In
+          if (user !== 0) {
+            this.sharedService.user = user; // setting user so as to share with all components
+            return true;
+          } else {
+            // Otherwise send user to login page to authenticate
+            this.router.navigate(["/login"]);
+            return false;
+          }
+        })
+      );
+  }
+  // Admin Log in
+  adminLoggedIn() {
+    this.options.withCredentials = true;
+    return this.http
+      .post(this. Uurl + "/api/loggedIn", "", this.options)
+      .pipe(
+        map((res: Response) => {
+          const user = res.json();
+          // Check if loggedIn user is admin user
+          if (user !== 0 && user.adminLoggedIn) {
+            return true;
+            
+          } else {
+            // Otherwise send user to login page to authenticate
+            this.router.navigate(["/profile"]);
+            return false;
+          }
+        })
+      );
+  }
+ 
  
   createUser(user: User) {
    // Send post request to the server
