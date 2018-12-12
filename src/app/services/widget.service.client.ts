@@ -9,6 +9,7 @@ import { environment} from "../../environments/environment";
 export class WidgetService {
     constructor (private http: Http){}
   Uurl = environment.Uurl;
+
   createWidget (widget: Widget) {
        // Send post request to the server
    const url = this.Uurl + "/api/widget";
@@ -28,7 +29,7 @@ export class WidgetService {
     );
   }
   findWidgetById (widgetId: string) {
-    const url = this.Uurl + `/api/widget/${widgetId}`;
+    const url = this.Uurl + "/api/widget/" + widgetId;
     return this.http.get(url).pipe(
         map((res: Response) => {
         return res.json();
