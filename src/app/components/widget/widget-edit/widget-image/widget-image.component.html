@@ -1,7 +1,6 @@
     <!--Navigation bar-->
     <nav class=" navbar navbar-light fixed-top bg-light">
       <a class="color-red" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
-<<<<<<< HEAD
       <a class="navbar-brand" routerLink="/user/{{uid}}/website/{{wid}}page/{{pid}}/widget/{{wgid}}"> Edit Widget</a>
       <button class="float-right color-red btn bg-transparent"  form="myForm" (click)="update()"><i class="fas fa-check"></i></button> 
   </nav>
@@ -12,35 +11,15 @@
               <div class="form-group">
                       <label for="url"> <b>URL</b></label>
                       <input name= "url" placeholder= "Image Url" [(ngModel)]="widget.url"  type="text" id="url" class="form-control"/>
-=======
-      <a class="navbar-brand" routerLink="/user/:uid/website/{{wid}}page/{{pid}}/widget/{{wgid}}"> Edit Widget</a>
-      <button class="float-right color-red btn bg-transparent" type ="submit" form ="myForm" (click)= "update()"><i class="fas fa-check"></i></button>
-      
-  </nav>
-  <!--List on the middle of  edit widget-->
-  <div class="container"> 
-      <form id="myForm" #myForm="ngForm" (ngSubmit)="update()">
-           <!--URL for the main page-->
-              <div class="form-group">
-                      <label for="url"> <b>URL</b></label>
-                      <input name= "url" placeholder="Image Url"
-                       [(ngModel)]="widget.url" name="url"  type="text" id="url" class="form-control"/>
->>>>>>> d72cc4223c28d951b1c0e23cc1797f6a79af96c3
+     
                   </div>
                    <!--Width for the main page-->
               <div class="form-group">
                       <label for="width"> <b>Width</b></label>
-<<<<<<< HEAD
                       <input name = "width" placeholder="Image Width" [(ngModel)]="widget.width"  type="text" id="width" class="form-control"/>
                   </div>
       
               <button type="button" (click)="delete()" class="btn btn-danger btn-block" > Delete</button>
-=======
-                      <input name ="width" placeholder="Image Width" [(ngModel)]="widget.width"  type="text" id="width" class="form-control"/>
-                  </div>
-      
-              <button type="button" (click)="delete ()" class="btn btn-danger btn-block"> Delete</button>
->>>>>>> d72cc4223c28d951b1c0e23cc1797f6a79af96c3
       </form>
   </div>
      
