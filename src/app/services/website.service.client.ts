@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
   export class WebsiteService {
   constructor (private http: Http){}
   Uurl = environment.Uurl;
+  
     createWebsite (website: Website) {
            // Send post request to the server
      const url = this.Uurl + "/api/website";

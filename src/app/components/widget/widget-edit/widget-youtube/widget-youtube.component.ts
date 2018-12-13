@@ -62,9 +62,6 @@ export class WidgetYoutubeComponent implements OnInit {
             this.pid, 
            "widget"
           ]);
-  
         });
-     
     }
-  
   }

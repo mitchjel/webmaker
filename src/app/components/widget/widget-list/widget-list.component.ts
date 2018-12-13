@@ -17,7 +17,7 @@ export class WidgetListComponent implements OnInit {
   widgets: Widget[];
   constructor( private activatedRoute: ActivatedRoute,
      private widgetService: WidgetService, private sanitizer: DomSanitizer
-     ) { }
+     ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe( 
@@ -37,7 +37,7 @@ export class WidgetListComponent implements OnInit {
         const splitUrl: string[] = src.split('/');
         embedUrl += splitUrl[splitUrl.length-1];
         // Telling bwroser that the url source is safe
-        return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
       }
       }
 

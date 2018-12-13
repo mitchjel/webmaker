@@ -66,7 +66,6 @@ export class WidgetImageComponent implements OnInit {
           ]);
   
         });
-     
     }
   
   }
